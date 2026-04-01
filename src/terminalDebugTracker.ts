@@ -90,7 +90,8 @@ export class TerminalDebugTracker implements vscode.DebugAdapterTracker {
             this.terminal = vscode.window.createTerminal({
               name,
               pty: this.pty,
-              location: { preserveFocus: true, viewColumn: TerminalDebugTracker.ourViewColumn !== undefined ? TerminalDebugTracker.ourViewColumn : vscode.ViewColumn.Beside },
+              // location: { preserveFocus: true, viewColumn: TerminalDebugTracker.ourViewColumn !== undefined ? TerminalDebugTracker.ourViewColumn : vscode.ViewColumn.Beside },
+              location: vscode.TerminalLocation.Panel,
               iconPath: new vscode.ThemeIcon('debug-console'),
               isTransient: true,
             });
