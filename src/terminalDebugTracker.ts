@@ -42,9 +42,9 @@ export class TerminalDebugTracker implements vscode.DebugAdapterTracker {
       const lineNumber = ++this.lineNumber;
       if (message.body.source) {
         this.linkMap.set(lineNumber, { startIndex: 0, length: 2 + lineNumber.toString().length, tooltip: `${message.body.source?.name}:${message.body.line}:${message.body.column} (${message.body.category})`, sourcePath: message.body.source.path, line: message.body.line, column: message.body.column});
-        return `${color}[${lineNumber}] ${output}${color ? '\x1b[0m' : ''}`;
+        return `${color}${output}${color ? '\x1b[0m' : ''}`;
       }
-      return `${color}(${lineNumber}) ${output}${color ? '\x1b[0m' : ''}`;
+      return `${color}${output}${color ? '\x1b[0m' : ''}`;
     };
     
     if (!this.pty) {
