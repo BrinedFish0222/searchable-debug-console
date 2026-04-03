@@ -6,7 +6,7 @@ import { TerminalDebugTracker } from './terminalDebugTracker';
 export function activate(context: vscode.ExtensionContext) {
   TerminalDebugTracker.ourViewColumn = context.workspaceState.get('ourViewColumn');
   context.subscriptions.push(
-		vscode.debug.registerDebugAdapterTrackerFactory('*', new DebugTrackerFactory()),
+    vscode.debug.registerDebugAdapterTrackerFactory('*', new DebugTrackerFactory()),
     vscode.window.registerTerminalLinkProvider(new LinkProvider()),
     vscode.window.tabGroups.onDidChangeTabGroups((event) => {
       const mineOpened = event.opened?.find(group => group.viewColumn === TerminalDebugTracker.ourViewColumn);
@@ -18,7 +18,7 @@ export function activate(context: vscode.ExtensionContext) {
         context.workspaceState.update('ourViewColumn', undefined);
       }
     }),
-	  );
-  }
+  );
+}
 
-export function deactivate() {}
+export function deactivate() { }
